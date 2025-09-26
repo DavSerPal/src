@@ -15,7 +15,7 @@
             "imagen" => "static/images/producto1.png",
             "precio" => 5000,
             "fecha" => "DD/MM/AAAA",
-            "categorías" => ["",""]
+            "categorías" => ["clave1","clave3"]
         ],
         [
             "clave" => "producto2",
@@ -24,7 +24,7 @@
             "imagen" => "",
             "precio" => 6600,
             "fecha" => "DD/MM/AAAA",
-            "categorías" => ["",""]
+            "categorías" => ["clave3","clave2"]
         ],
         [
             "clave" => "producto3",
@@ -33,7 +33,7 @@
             "imagen" => "static/images/producto3.png",
             "precio" => 3800,
             "fecha" => "DD/MM/AAAA",
-            "categorías" => ["",""]
+            "categorías" => ["clave2",]
         ],
         [
             "clave" => "producto4",
@@ -42,7 +42,7 @@
             "imagen" => "static/images/producto4.png",
             "precio" => 660,
             "fecha" => "DD/MM/AAAA",
-            "categorías" => ["",""]
+            "categorías" => ["clave1","clave2"]
         ],
         [
             "clave" => "producto5",
@@ -51,7 +51,7 @@
             "imagen" => "static/images/producto5.png",
             "precio" => 1050,
             "fecha" => "DD/MM/AAAA",
-            "categorías" => ["",""]
+            "categorías" => ["clave2","clave3"]
         ],
         [
             "clave" => "producto6",
@@ -60,7 +60,7 @@
             "imagen" => "static/images/producto6.png",
             "precio" => 3000,
             "fecha" => "DD/MM/AAAA",
-            "categorías" => ["",""]
+            "categorías" => ["clave2",]
         ],
         [
             "clave" => "producto7",
@@ -69,7 +69,7 @@
             "imagen" => "static/images/producto7.png",
             "precio" => 30690,
             "fecha" => "DD/MM/AAAA",
-            "categorías" => ["",""]
+            "categorías" => ["clave1","clave3"]
         ],
         [
             "clave" => "producto8",
@@ -78,7 +78,7 @@
             "imagen" => "static/images/producto8.png",
             "precio" => 5600,
             "fecha" => "DD/MM/AAAA",
-            "categorías" => ["",""]
+            "categorías" => ["clave1",]
         ],
         [
             "clave" => "producto9",
@@ -87,7 +87,7 @@
             "imagen" => "static/images/producto9.png",
             "precio" => 1600,
             "fecha" => "DD/MM/AAAA",
-            "categorías" => ["",""]
+            "categorías" => ["clave2","clave3"]
         ],
         [
             "clave" => "producto10",
@@ -96,7 +96,7 @@
             "imagen" => "static/images/producto10.png",
             "precio" => 3800,
             "fecha" => "DD/MM/AAAA",
-            "categorías" => ["",""]
+            "categorías" => ["clave1","clave3"]
         ],
         [
             "clave" => "producto11",
@@ -105,7 +105,7 @@
             "imagen" => "static/images/producto11.png",
             "precio" => 6100,
             "fecha" => "DD/MM/AAAA",
-            "categorías" => ["",""]
+            "categorías" => ["clave2","clave3"]
         ],
         [
             "clave" => "producto12",
@@ -114,8 +114,23 @@
             "imagen" => "static/images/producto12.png",
             "precio" => 8200,
             "fecha" => "DD/MM/AAAA",
-            "categorías" => ["",""]
+            "categorías" => ["clave1","clave2"]
         ],
         
     ];
+    $categorias = [
+        [
+            "clave" => "clave1",
+            "nombre" => "Cilantro",
+        ],
+        [
+            "clave" => "clave2",
+            "nombre" => "Perejil",
+        ],
+        [
+            "clave" => "clave3",
+            "nombre" => "Magnesio",
+        ],
+    ];
+
 ?>

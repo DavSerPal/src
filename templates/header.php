@@ -8,10 +8,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">    
 
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous"> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <!-- Optional theme -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/flatly/bootstrap.min.css" integrity="sha384-qF/QmIAj5ZaYFAeQcrQ6bfVMAh4zZlrGwTPY7T/M+iTTLJqJBJjwwnsE5Y0mV7QK" crossorigin="anonymous">    
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/flatly/bootstrap.min.css" integrity="sha384-qF/QmIAj5ZaYFAeQcrQ6bfVMAh4zZlrGwTPY7T/M+iTTLJqJBJjwwnsE5Y0mV7QK" crossorigin="anonymous">     -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php include_once("datos.php") ?>
     <style>
@@ -63,15 +65,16 @@
             <!-- Boton Menú INICIO -->
             <li class="nav-item"><a href="index.php" class="<?php print($inicio_activo) ?>" aria-current="page">INICIO</a></li>
             <!-- Menú desplegable CATEGORIAS -->
-                <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-bs-toggle="dropdown" aria-haspopup="true">
+            <li class="nav-item dropdown">    
+                <a class="nav-link dropdown-toggle" href="#" id="dropdownMenu1" data-bs-toggle="dropdown" aria-expanded="false">
                     CATEGORÍAS
-                    <span class="caret"></span>
                 </a>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                    <a class="dropdown-item" href="#">Categoría1</a>
-                    <a class="dropdown-item" href="#">Categoría2</a>
-                    <a class="dropdown-item" href="#">Categoría3</a>
-                </div>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <?php foreach ($categorias as $i => $value) {
+                        print('<li><a class="dropdown-item" href="#">' . $value['nombre'] . '</a></li>');
+                    }
+                    ?>
+                </ul>
             </li>
             <!-- Boton Menú CONTACTO -->
             <li class="nav-item"><a href="contacto.php" class="<?php print($contacto_activo)?>">CONTACTO</a></li>

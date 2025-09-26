@@ -5,12 +5,6 @@
 <?php include_once("datos.php") ?>
 
 
-<!-- <div class="row">
-<div class="col-12 d-flex justify-content-center my-5">
-    <a href="?page=<?php print($page+1) ?>" class="btn btn-primary btn-lg px-5 py-5">Siguiente</a>
-</div>
-</div> -->
-
 <div class="container">
     <h2 class="mb-5">ADMINISTRADOR</h2>
     <div class="row">

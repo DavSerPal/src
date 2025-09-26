@@ -75,7 +75,7 @@ if ($order == 0) {
     <?php for($i = $prod_pag[0];$i < $prod_pag[1]; $i++): ?>
       <?php if ($productos[$i]['clave']):?>
       <div class="col-sm-3">
-          <a href="#" class="p-5">
+          <a href="#" class="p-5 text-decoration-none">
             <div class="card">
                 <img class="card-img-top" src=<?php $productos[$i]['imagen']?print($productos[$i]['imagen']):print("./static/images/default.png")  ?> alt="<?php print($productos[$i]['titulo'])?>" >
                 <div class="card-body">

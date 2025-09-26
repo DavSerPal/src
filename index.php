@@ -10,19 +10,12 @@
     align-items: center;
     padding: 100px;
   }
-    button{
-    width: 500px;
-    height: 150px;
-    align: center;
-    border-radius: 20px;
-    background: #2b2b2b;
-  }
 </style>
 <div class="body-index">
 
 
   <div class="div_boton">
-    <button><a href="productos.php">Ver Productos</a></button>
+    <a class= "btn btn-primary btn-lg py-5 px-5" href="productos.php">Ver Productos</a>
   </div>
 </div>
 
