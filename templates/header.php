@@ -14,6 +14,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php include_once("datos.php") ?>
+    <style>
+        header{
+            background: #eaeaea;
+        }
+        footer{
+            background: #eaeaea;
+        }
+    </style>
 </head>
 <!-- https://radu.link/make-footer-stay-bottom-page-bootstrap/ -->
 <body class="d-flex flex-column min-vh-100">
@@ -25,6 +33,7 @@
         </a>
     <?php
 
+    # Comprueba la página actual para destacar el "boton" del header
     if($_SERVER['SCRIPT_NAME']=='/index.php') {
         $inicio_activo = "nav-link active";
         $contacto_activo = "nav-link";
@@ -45,19 +54,23 @@
     ?>
 
         <ul class="nav nav-pills">
-            <?php 
+            <?php
+            # Comprueba si el usuario está logeado como admin, para mostrar el link a la zona "privada"
             if ($loggedIn == TRUE) {
                 print('<li class="nav-item"><a href="admin.php" class="'.$admin_activo.'">ADMINISTRADOR</a></li>');
             }
             ?>
             <li class="nav-item"><a href="index.php" class="<?php print($inicio_activo) ?>" aria-current="page">INICIO</a></li>
-            <li class="nav-item">
-                    <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true">
-                        CATEGORÍAS
-                        <span class="caret"></span>
-                    </a>        
+                <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-bs-toggle="dropdown" aria-haspopup="true">
+                    CATEGORÍAS
+                    <span class="caret"></span>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <a class="dropdown-item" href="#">Categoría1</a>
+                    <a class="dropdown-item" href="#">Categoría2</a>
+                    <a class="dropdown-item" href="#">Categoría3</a>
+                </div>
             </li>
-
             <li class="nav-item"><a href="contacto.php" class="<?php print($contacto_activo)?>">CONTACTO</a></li>
         </ul>
     </header>
