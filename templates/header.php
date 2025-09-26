@@ -60,7 +60,9 @@
                 print('<li class="nav-item"><a href="admin.php" class="'.$admin_activo.'">ADMINISTRADOR</a></li>');
             }
             ?>
+            <!-- Boton Menú INICIO -->
             <li class="nav-item"><a href="index.php" class="<?php print($inicio_activo) ?>" aria-current="page">INICIO</a></li>
+            <!-- Menú desplegable CATEGORIAS -->
                 <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-bs-toggle="dropdown" aria-haspopup="true">
                     CATEGORÍAS
                     <span class="caret"></span>
@@ -71,6 +73,7 @@
                     <a class="dropdown-item" href="#">Categoría3</a>
                 </div>
             </li>
+            <!-- Boton Menú CONTACTO -->
             <li class="nav-item"><a href="contacto.php" class="<?php print($contacto_activo)?>">CONTACTO</a></li>
         </ul>
     </header>
