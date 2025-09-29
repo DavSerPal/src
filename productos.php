@@ -27,6 +27,12 @@ $prod_por_pag = 4;
     color: #fff;
     background: #2b2b2b;
   }
+  .div_ppp{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin-left: 70px;
+  }
 </style>
 
 <?php
@@ -81,6 +87,13 @@ if ($order == 0) {
                 <div class="card-body">
                     <h5 class="card-title"><?php print($productos[$i]['titulo']) ?></h5>
                     <p class="card-text"><?php print($productos[$i]['descripcion']) ?></p>
+                    <p class="card-text"><?php 
+                    foreach ($productos[$i]['categorias'] as $categoria => $nombre_categoria) {
+                      if ( array_key_exists($nombre_categoria, $categorias)):
+                        print($categorias[$nombre_categoria] . " ");
+                      endif;
+                    }
+                    ?></p>
                 </div>
             </div>
           </a>
@@ -89,7 +102,21 @@ if ($order == 0) {
     <?php endfor; ?>
     </div>
   </div>
-
+  <div class="div_ppp">
+    <ul class="nav nav-pills">
+      <li class="nav-item dropdown">    
+        <a class="nav-link dropdown-toggle" href="#" id="dropdownMenu1" data-bs-toggle="dropdown" aria-expanded="false">
+            Productos por pagina
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+          <li><a class="dropdown-item" href="#">4</a></li>
+          <li><a class="dropdown-item" href="#">8</a></li>
+          <li><a class="dropdown-item" href="#">12</a></li>
+          <li><a class="dropdown-item" href="#">16</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
   <div class="div_botones d-flex">
     <a class="btn btn-primary btn-lg px-5 py-2" href="?page=<?php print($page-1) ?>&order=<?php print($order) ?>" style="<?php print($ocultar_atras)?>">Atras</a>
     <a class="btn btn-primary btn-lg px-5 py-2 ms-auto" href="?page=<?php print($page+1) ?>&order=<?php print($order) ?>" style="<?php print($ocultar_siguiente)?>">Siguiente</a>
