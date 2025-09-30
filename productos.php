@@ -5,12 +5,6 @@
 <?php include_once("templates/header.php") ?>
 <?php include_once("datos.php") ?>
 
-<?php
-$page = isset($_GET['page']) ? (int)$_GET['page']: 1;
-$order = isset($_GET['order']) ? (int)$_GET['order']: 0;
-$prod_por_pag = 4;
-?>
-
 <style>
   .card-img-top{
     width: 250px;
@@ -69,8 +63,8 @@ if ($order == 0) {
 ?>
 
 <div class="d-flex mx-auto">
-  <a class="btn btn-primary btn-lg px-5 py-2 mx-2" href="?page=<?php print($page) ?>&order=0">Descendente (A-Z)</a>
-  <a class="btn btn-primary btn-lg px-5 py-2 mx-2" href="?page=<?php print($page) ?>&order=1">Ascendente (Z-A)</a>
+  <a class="btn btn-primary btn-lg px-5 py-2 mx-2" href="?page=<?php print($page) ?>&categoria=<?php print($fltro_categoria) ?>&order=0&prod_pag=<?php print($prod_por_pag)?>">Descendente (A-Z)</a>
+  <a class="btn btn-primary btn-lg px-5 py-2 mx-2" href="?page=<?php print($page) ?>&categoria=<?php print($fltro_categoria) ?>&order=1&prod_pag=<?php print($prod_por_pag)?>">Ascendente (Z-A)</a>
 </div>
 
   <div class="container mb-5">
@@ -78,17 +72,35 @@ if ($order == 0) {
 
     <?php $prod_pag = ver_productos($page,$prod_por_pag);?>
 
+    <?php 
+    $prod_filtrados = array_values(array_filter($productos, function($producto) use($fltro_categoria,$categorias){
+      if ($fltro_categoria=="no-cat"){
+        return true;
+      } else {
+        
+        foreach ($producto['categorias'] as $value) {
+          if ($categorias[$value] == $fltro_categoria) {
+            return true;
+          }
+        }
+        return false;
+      }
+    })); 
+    ?>
+
     <?php for($i = $prod_pag[0];$i < $prod_pag[1]; $i++): ?>
-      <?php if ($productos[$i]['clave']):?>
+      <?php if ($prod_filtrados[$i]['clave']):?>
       <div class="col-sm-3">
           <a href="#" class="p-5 text-decoration-none">
             <div class="card">
-                <img class="card-img-top" src=<?php $productos[$i]['imagen']?print($productos[$i]['imagen']):print("./static/images/default.png")  ?> alt="<?php print($productos[$i]['titulo'])?>" >
+                <img class="card-img-top" src=<?php $prod_filtrados[$i]['imagen']?print($prod_filtrados[$i]['imagen']):print("./static/images/default.png")  ?> alt="<?php print($productos[$i]['titulo'])?>" >
                 <div class="card-body">
-                    <h5 class="card-title"><?php print($productos[$i]['titulo']) ?></h5>
-                    <p class="card-text"><?php print($productos[$i]['descripcion']) ?></p>
-                    <p class="card-text"><?php 
-                    foreach ($productos[$i]['categorias'] as $categoria => $nombre_categoria) {
+                    <h5 class="card-title"><?php print($prod_filtrados[$i]['titulo']) ?></h5>
+                    <p class="card-text"><?php print($prod_filtrados[$i]['descripcion']) ?></p>
+                    <p class="card-text"><?php print($prod_filtrados[$i]['precio']) ?></p>
+                    <p class="card-text">Categorias:
+                    <?php 
+                    foreach ($prod_filtrados[$i]['categorias'] as $categoria => $nombre_categoria) {
                       if ( array_key_exists($nombre_categoria, $categorias)):
                         print($categorias[$nombre_categoria] . " ");
                       endif;
@@ -109,17 +121,17 @@ if ($order == 0) {
             Productos por pagina
         </a>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-          <li><a class="dropdown-item" href="#">4</a></li>
-          <li><a class="dropdown-item" href="#">8</a></li>
-          <li><a class="dropdown-item" href="#">12</a></li>
-          <li><a class="dropdown-item" href="#">16</a></li>
+          <li><a class="dropdown-item" href="?page=<?php print($page) ?>&categoria=<?php print($fltro_categoria) ?>&order=<?php print($order)?>&prod_pag=4?>">4</a></li>
+          <li><a class="dropdown-item" href="?page=<?php print($page) ?>&categoria=<?php print($fltro_categoria) ?>&order=<?php print($order)?>&prod_pag=8?>">8</a></li>
+          <li><a class="dropdown-item" href="?page=<?php print($page) ?>&categoria=<?php print($fltro_categoria) ?>&order=<?php print($order)?>&prod_pag=12?>">12</a></li>
+          <li><a class="dropdown-item" href="?page=<?php print($page) ?>&categoria=<?php print($fltro_categoria) ?>&order=<?php print($order)?>&prod_pag=16?>">16</a></li>
         </ul>
       </li>
     </ul>
   </div>
   <div class="div_botones d-flex">
-    <a class="btn btn-primary btn-lg px-5 py-2" href="?page=<?php print($page-1) ?>&order=<?php print($order) ?>" style="<?php print($ocultar_atras)?>">Atras</a>
-    <a class="btn btn-primary btn-lg px-5 py-2 ms-auto" href="?page=<?php print($page+1) ?>&order=<?php print($order) ?>" style="<?php print($ocultar_siguiente)?>">Siguiente</a>
+    <a class="btn btn-primary btn-lg px-5 py-2" href="?page=<?php print($page-1) ?>&categoria=<?php print($fltro_categoria) ?>&order=<?php print($order) ?>&prod_pag=<?php print($prod_por_pag)?>" style="<?php print($ocultar_atras)?>">Atras</a>
+    <a class="btn btn-primary btn-lg px-5 py-2 ms-auto" href="?page=<?php print($page+1) ?>&categoria=<?php print($fltro_categoria) ?>&order=<?php print($order) ?>&prod_pag=<?php print($prod_por_pag)?>" style="<?php print($ocultar_siguiente)?>">Siguiente</a>
   </div>
 
 <?php include_once("templates/footer.php") ?>

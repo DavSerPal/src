@@ -28,6 +28,13 @@
 <!-- https://radu.link/make-footer-stay-bottom-page-bootstrap/ -->
 <body class="d-flex flex-column min-vh-100">
 
+    <?php
+    $page = isset($_GET['page']) ? (int)$_GET['page']: 1;
+    $order = isset($_GET['order']) ? (int)$_GET['order']: 0;
+    $prod_por_pag = isset($_GET['prod_pag']) ? (int)$_GET['prod_pag']: 4;
+    $fltro_categoria = isset($_GET['categoria']) ? $_GET['categoria']: "no-cat";
+    ?>
+
     <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
         <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
             <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
@@ -40,18 +47,27 @@
         $inicio_activo = "nav-link active";
         $contacto_activo = "nav-link";
         $admin_activo = "nav-link";
+        $categoria_activo = "nav-link";
     } else if ($_SERVER['SCRIPT_NAME']=='/contacto.php') {
         $contacto_activo = "nav-link active";
         $inicio_activo = "nav-link";
         $admin_activo = "nav-link";
+        $categoria_activo = "nav-link";
     } else if ($_SERVER['SCRIPT_NAME']=='/admin.php') {
         $admin_activo = "nav-link active";
         $inicio_activo = "nav-link";
         $contacto_activo = "nav-link";
+        $categoria_activo = "nav-link";
+    } else if ($_SERVER['SCRIPT_NAME']=='/productos.php') {
+        $admin_activo = "nav-link";
+        $inicio_activo = "nav-link";
+        $contacto_activo = "nav-link";
+        $categoria_activo = "nav-link active";
     } else {
         $contacto_activo = "nav-link";
         $inicio_activo = "nav-link";
         $admin_activo = "nav-link";
+        $categoria_activo = "nav-link";
     }
     ?>
 
@@ -66,14 +82,15 @@
             <li class="nav-item"><a href="index.php" class="<?php print($inicio_activo) ?>" aria-current="page">INICIO</a></li>
             <!-- Menú desplegable CATEGORIAS -->
             <li class="nav-item dropdown">    
-                <a class="nav-link dropdown-toggle" href="#" id="dropdownMenu1" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class="<?php print($categoria_activo) ?> href="#" id="dropdownMenu1" data-bs-toggle="dropdown" aria-expanded="false">
                     CATEGORÍAS
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                     <?php foreach ($categorias as $i => $value) {
-                        print('<li><a class="dropdown-item" href="#">' . $value['nombre'] . '</a></li>');
+                        print('<li><a class="dropdown-item" href="?page=' . $page . '&categoria=' . $value . '&order=' . $order . '&prod_pag=' . $prod_por_pag . '">' . $value . '</a></li>');
                     }
                     ?>
+                    <li><a class="dropdown-item" href="?page=<?php print($page) ?>&categoria=no-cat&order=<?php print($order)?>&prod_pag=<?php print($prod_por_pag)?>">No filtrar por categoría</a></li>
                 </ul>
             </li>
             <!-- Boton Menú CONTACTO -->

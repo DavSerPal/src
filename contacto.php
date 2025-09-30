@@ -15,7 +15,7 @@
     <h2 class="mb-5">Contacto</h2>
     <div class="row">
         <div class="col-md">
-            <img src="static/images/producto7.png" class="img-fluid rounded">
+            <img src="static/images/cilantro.png" class="img-fluid rounded">
         </div>
         <div class="col-md">
             <h3><?php print($datos_contacto)?></h3>
