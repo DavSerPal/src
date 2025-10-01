@@ -65,6 +65,7 @@ if ($order == 0) {
 <div class="d-flex mx-auto">
   <a class="btn btn-primary btn-lg px-5 py-2 mx-2" href="?page=<?php print($page) ?>&categoria=<?php print($fltro_categoria) ?>&order=0&prod_pag=<?php print($prod_por_pag)?>">Descendente (A-Z)</a>
   <a class="btn btn-primary btn-lg px-5 py-2 mx-2" href="?page=<?php print($page) ?>&categoria=<?php print($fltro_categoria) ?>&order=1&prod_pag=<?php print($prod_por_pag)?>">Ascendente (Z-A)</a>
+  <a class="btn btn-primary btn-lg px-5 py-2 mx-2" href="productos.php?page=<?php print($page) ?>&categoria=no-cat&order=<?php print($order)?>&prod_pag=<?php print($prod_por_pag)?>">No filtrar por categoría</a>
 </div>
 
   <div class="container mb-5">
@@ -89,9 +90,9 @@ if ($order == 0) {
     ?>
 
     <?php for($i = $prod_pag[0];$i < $prod_pag[1]; $i++): ?>
-      <?php if ($prod_filtrados[$i]['clave']):?>
+      <?php if ($prod_filtrados[$i]['id']):?>
       <div class="col-sm-3">
-          <a href="#" class="p-5 text-decoration-none">
+          <a href="ficha_producto.php?id=<?php print($prod_filtrados[$i]['id']) ?>" class="p-5 text-decoration-none">
             <div class="card">
                 <img class="card-img-top" src=<?php $prod_filtrados[$i]['imagen']?print($prod_filtrados[$i]['imagen']):print("./static/images/default.png")  ?> alt="<?php print($productos[$i]['titulo'])?>" >
                 <div class="card-body">

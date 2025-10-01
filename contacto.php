@@ -1,30 +1,34 @@
-
 <!-- DAVID SERRANO PALAZÓN -->
 
 <?php include("templates/header.php"); ?>
 <?php include_once("datos.php") ?>
 
 
-<!-- <div class="row">
-<div class="col-12 d-flex justify-content-center my-5">
-    <a href="?page=<?php print($page+1) ?>" class="btn btn-primary btn-lg px-5 py-5">Siguiente</a>
-</div>
-</div> -->
+<?php
+$nameErr = "";
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (empty($_POST["nombreApellidos"])) {
+        $nameErr = "Por favor, introduzca nombre y apellidos";
+    } else {
+        $name = test_input($_POST["nombreApellidos"]);
+        if (!preg_match("/^[a-zA-Z-' ]*$/",$name)) {
+            $nameErr = "Solo se permiten letras y espacios.";
+        }
+    }
+}
+?>
 
 <div class="container">
-    <h2 class="mb-5">Contacto</h2>
-    <div class="row">
-        <div class="col-md">
-            <img src="static/images/cilantro.png" class="img-fluid rounded">
+    <h2 class="mb-5">Contacta con Nosotros</h2>
+
+    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
+        <div class="mb-3 col-sm-6 p-0">
+            <label for="nombreApellidosID" class="form-label">Nombre y apellidos</label>
+            <input type="text" name="nombreApellidos" class="form-control" id="nombreApellidosID" placeholder="Su nombre y apellidos">
         </div>
-        <div class="col-md">
-            <h3><?php print($datos_contacto)?></h3>
-            <p>Ciclo Superior DAW.</p>
-            <p>Apasionado del mundo de la programación en general, y de las tecnologías web en particular.</p>
-            <p>Si tienes cualquier tipo de pregunta, contacta conmigo por favor.</p>
-            <p>Teléfono: 87654321</p>
-        </div>
-    </div>
+        <button type="submit" class="btn btn-success">Enviar</button>
+    </form>
+
 </div>
 
 <?php include("templates/footer.php"); ?>
