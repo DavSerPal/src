@@ -51,7 +51,7 @@
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                     <?php foreach ($categorias as $i => $value) {
-                        print('<li><a class="dropdown-item" href="productos.php?page=' . $page . '&categoria=' . $value . '&order=' . $order . '&prod_pag=' . $prod_por_pag . '">' . $value . '</a></li>');
+                        print('<li><a class="dropdown-item" href="productos.php?page=1&categoria=' . $value . '&order=' . $order . '&prod_pag=' . $prod_por_pag . '">' . $value . '</a></li>');
                     }
                     ?>
                 </ul>

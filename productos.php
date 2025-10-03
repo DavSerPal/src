@@ -38,13 +38,6 @@ function ver_productos($page,$prod_por_pag){
 }
 ?>
 
-<?php
-if ($page==1) {
-  $ocultar_atras="display: none";
-} else if ($page==ceil(count($productos)/$prod_por_pag)) {
-  $ocultar_siguiente="display: none";
-}
-?>
 <!-- 
   Seleccion de distintos tipos de orden (if de los usort)
 -->
@@ -61,19 +54,7 @@ if ($order == 0) {
   usort($productos, 'titulo_asc');
 }
 ?>
-
-<div class="d-flex mx-auto">
-  <a class="btn btn-primary btn-lg px-5 py-2 mx-2" href="?page=<?php print($page) ?>&categoria=<?php print($fltro_categoria) ?>&order=0&prod_pag=<?php print($prod_por_pag)?>">Descendente (A-Z)</a>
-  <a class="btn btn-primary btn-lg px-5 py-2 mx-2" href="?page=<?php print($page) ?>&categoria=<?php print($fltro_categoria) ?>&order=1&prod_pag=<?php print($prod_por_pag)?>">Ascendente (Z-A)</a>
-  <a class="btn btn-primary btn-lg px-5 py-2 mx-2" href="productos.php?page=<?php print($page) ?>&categoria=no-cat&order=<?php print($order)?>&prod_pag=<?php print($prod_por_pag)?>">No filtrar por categoría</a>
-</div>
-
-  <div class="container mb-5">
-    <div class="row">
-
-    <?php $prod_pag = ver_productos($page,$prod_por_pag);?>
-
-    <?php 
+<?php 
     $prod_filtrados = array_values(array_filter($productos, function($producto) use($fltro_categoria,$categorias){
       if ($fltro_categoria=="no-cat"){
         return true;
@@ -87,21 +68,48 @@ if ($order == 0) {
         return false;
       }
     })); 
-    ?>
+
+    if ($prod_filtrados) {
+      $productos = $prod_filtrados;
+    }
+  ?>
+
+<div class="d-flex mx-auto">
+  <a class="btn btn-primary btn-lg px-5 py-2 mx-2" href="?page=<?php print($page) ?>&categoria=<?php print($fltro_categoria) ?>&order=0&prod_pag=<?php print($prod_por_pag)?>">Descendente (A-Z)</a>
+  <a class="btn btn-primary btn-lg px-5 py-2 mx-2" href="?page=<?php print($page) ?>&categoria=<?php print($fltro_categoria) ?>&order=1&prod_pag=<?php print($prod_por_pag)?>">Ascendente (Z-A)</a>
+  <a class="btn btn-primary btn-lg px-5 py-2 mx-2" href="productos.php?page=<?php print($page) ?>&categoria=no-cat&order=<?php print($order)?>&prod_pag=<?php print($prod_por_pag)?>">No filtrar por categoría</a>
+</div>
+
+  <div class="container mb-5">
+    <div class="d-flex justify-content-center align-items-center">
+      <?php
+        if ($page > ceil(count($prod_filtrados)/$prod_por_pag)){
+          print("<h1 style='padding-top: 150px; padding-bottom: 150px;'> NO EXISTEN PRODUCTOS O LA PÁGINA ES INCORRECTA</h1>");
+
+          $no_productos = true;
+
+        }
+      ?>
+    </div>
+    <div class="row">
+
+    <?php $prod_pag = ver_productos($page,$prod_por_pag);?>
 
     <?php for($i = $prod_pag[0];$i < $prod_pag[1]; $i++): ?>
-      <?php if ($prod_filtrados[$i]['id']):?>
+
+      <?php if ($productos[$i]['id']) {?>
+
       <div class="col-sm-3">
-          <a href="ficha_producto.php?id=<?php print($prod_filtrados[$i]['id']) ?>" class="p-5 text-decoration-none">
+          <a href="ficha_producto.php?id=<?php print($productos[$i]['id']) ?>" class="p-5 text-decoration-none">
             <div class="card">
-                <img class="card-img-top" src=<?php $prod_filtrados[$i]['imagen']?print($prod_filtrados[$i]['imagen']):print("./static/images/default.png")  ?> alt="<?php print($productos[$i]['titulo'])?>" >
+                <img class="card-img-top" src=<?php $productos[$i]['imagen']?print($productos[$i]['imagen']):print("./static/images/default.png")  ?> alt="<?php print($productos[$i]['titulo'])?>" >
                 <div class="card-body">
-                    <h5 class="card-title"><?php print($prod_filtrados[$i]['titulo']) ?></h5>
-                    <p class="card-text"><?php print($prod_filtrados[$i]['descripcion']) ?></p>
-                    <p class="card-text"><?php print($prod_filtrados[$i]['precio']) ?></p>
+                    <h5 class="card-title"><?php print($productos[$i]['titulo']) ?></h5>
+                    <p class="card-text"><?php print($productos[$i]['descripcion']) ?></p>
+                    <p class="card-text"><?php print($productos[$i]['precio']) ?></p>
                     <p class="card-text">Categorias:
                     <?php 
-                    foreach ($prod_filtrados[$i]['categorias'] as $categoria => $nombre_categoria) {
+                    foreach ($productos[$i]['categorias'] as $categoria => $nombre_categoria) {
                       if ( array_key_exists($nombre_categoria, $categorias)):
                         print($categorias[$nombre_categoria] . " ");
                       endif;
@@ -111,8 +119,9 @@ if ($order == 0) {
             </div>
           </a>
         </div>
-      <?php endif;?>
-    <?php endfor; ?>
+      <?php 
+      }
+      endfor; ?>
     </div>
   </div>
   <div class="div_ppp">
@@ -131,8 +140,8 @@ if ($order == 0) {
     </ul>
   </div>
   <div class="div_botones d-flex">
-    <a class="btn btn-primary btn-lg px-5 py-2" href="?page=<?php print($page-1) ?>&categoria=<?php print($fltro_categoria) ?>&order=<?php print($order) ?>&prod_pag=<?php print($prod_por_pag)?>" style="<?php print($ocultar_atras)?>">Atras</a>
-    <a class="btn btn-primary btn-lg px-5 py-2 ms-auto" href="?page=<?php print($page+1) ?>&categoria=<?php print($fltro_categoria) ?>&order=<?php print($order) ?>&prod_pag=<?php print($prod_por_pag)?>" style="<?php print($ocultar_siguiente)?>">Siguiente</a>
+    <a class="btn btn-primary btn-lg px-5 py-2" href="?page=<?php print($page-1) ?>&categoria=<?php print($fltro_categoria) ?>&order=<?php print($order) ?>&prod_pag=<?php print($prod_por_pag)?>" style="<?php if ($page==1 || $no_productos) print("display: none"); ?>">Atras</a>
+    <a class="btn btn-primary btn-lg px-5 py-2 ms-auto" href="?page=<?php print($page+1) ?>&categoria=<?php print($fltro_categoria) ?>&order=<?php print($order) ?>&prod_pag=<?php print($prod_por_pag)?>" style="<?php if ($page==ceil(count($prod_filtrados)/$prod_por_pag) || $no_productos) {print("display: none");} ?>">Siguiente</a>
   </div>
 
 <?php include_once("templates/footer.php") ?>

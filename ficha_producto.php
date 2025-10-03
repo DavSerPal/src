@@ -22,8 +22,8 @@
             </div>
             <div class="col-md">
                 <h3><?php print($producto['titulo'])?></h3>
-                <p><?php print($producto['descripcion'])?></p>  
-                <p><?php print(nl2br($producto['fecha']))?></p>
+                <p><?php print(nl2br($producto['descripcion']))?></p>  
+                <p><?php print($producto['fecha'])?></p>
                 <p class="card-text">Categorias:
                     <?php 
                     foreach ($producto['categorias'] as $categoria => $nombre_categoria) {
