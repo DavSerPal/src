@@ -6,6 +6,39 @@
 
     $datos_contacto = "David Serrano Palazon";
 
+    $categorias = [
+        "etb" => "Elite Trainer Box",
+        "sellado" => "Producto Sellado",
+        "coleccionista" => "Coleccionista",
+        "mazos" => "Mazos de Juego",
+        "juego_rapido" => "Listo para Jugar",
+        "sobres" => "Sobres de Expansión",
+        "expansiones" => "Expansiones",
+        "latas" => "Latas Metálicas",
+        "cajas" => "Cajas Coleccionables",
+        "promos" => "Cartas Promocionales",
+        "booster_box" => "Cajas Booster",
+        "competitivo" => "Competitivo",
+        "premium" => "Edición Premium",
+        "ultra" => "Ultra Premium",
+        "mini" => "Mini Latas",
+        "union" => "Cartas V-Union",
+        "crown_zenith" => "Crown Zenith",
+        "pokeball" => "Diseño Poké Ball",
+        "vmx" => "VMAX Collection"
+    ];
+
+    // 1. Leer los dos ficheros JSON
+    $json1 = file_get_contents("productos1.json");
+    $json2 = file_get_contents("productos2.json");
+    
+    // 2. Pasar a arrays asociativos
+    $array1 = json_decode($json1, true);
+    $array2 = json_decode($json2, true);
+
+    // 3. Fusionar en un único array
+    $productos = array_merge($array1, $array2);
+
     //Array que contiene los productos con su información
     // $productos = [
     //     [
@@ -189,43 +222,6 @@
     //         "categorias" => ["cajas","promos","coleccionista"]
     //     ],
     // ];
-
-    $categorias = [
-        "etb" => "Elite Trainer Box",
-        "sellado" => "Producto Sellado",
-        "coleccionista" => "Coleccionista",
-        "mazos" => "Mazos de Juego",
-        "juego_rapido" => "Listo para Jugar",
-        "sobres" => "Sobres de Expansión",
-        "expansiones" => "Expansiones",
-        "latas" => "Latas Metálicas",
-        "cajas" => "Cajas Coleccionables",
-        "promos" => "Cartas Promocionales",
-        "booster_box" => "Cajas Booster",
-        "competitivo" => "Competitivo",
-        "premium" => "Edición Premium",
-        "ultra" => "Ultra Premium",
-        "mini" => "Mini Latas",
-        "union" => "Cartas V-Union",
-        "crown_zenith" => "Crown Zenith",
-        "pokeball" => "Diseño Poké Ball",
-        "vmx" => "VMAX Collection"
-    ];
-
-    // 1. Leer los dos ficheros JSON
-    $json1 = file_get_contents("proyectos1.json");
-    $json2 = file_get_contents("proyectos2.json");
-    
-    // 2. Pasar a arrays asociativos
-    $array1 = json_decode($json1, true);
-    $array2 = json_decode($json2, true);
-    
-    // 3. Fusionar en un único array
-    $proyectos = array_merge($array1, $array2);
-
-
-
-
 
 
 

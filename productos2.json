@@ -1,0 +1,92 @@
+[
+    {
+        "id" : 11,
+        "titulo" : "Mazo Mewtwo V",
+        "descripcion" : "Deck temático con Mewtwo V listo para jugar.",
+        "imagen" : "https://m.media-amazon.com/images/I/71HBVYi6xZL.jpg",
+        "precio" : "15.99€",
+        "fecha" : "11/07/2022",
+        "categorias" : ["mazos","juego_rapido","competitivo"]
+    },
+    {
+        "id" : 12,
+        "titulo" : "Colección Paldea",
+        "descripcion" : "Caja con promos de starters Paldea y 3 sobres.",
+        "imagen" : "https://m.media-amazon.com/images/I/81wAaziGm2L.jpg",
+        "precio" : "19.99€",
+        "fecha" : "06/01/2023",
+        "categorias" : ["cajas","promos","coleccionista"]
+    },
+    {
+        "id" : 13,
+        "titulo" : "Caja Morpeko V-Union",
+        "descripcion" : "Caja con Morpeko V-Union y accesorios de juego.",
+        "imagen" : "https://m.media-amazon.com/images/I/91D0mvXzO-L.jpg",
+        "precio" : "29.99€",
+        "fecha" : "01/04/2022",
+        "categorias" : ["cajas","union","coleccionista"]
+    },
+    {
+        "id" : 14,
+        "titulo" : "Elite Trainer Crown Zenith",
+        "descripcion" : "Caja de Entrenador Élite expansión Crown Zenith.",
+        "imagen" : "https://m.media-amazon.com/images/I/61S0G8AHUtL._UF894,1000_QL80_.jpg",
+        "precio" : "59.99€",
+        "fecha" : "20/01/2023",
+        "categorias" : ["etb","crown_zenith","sellado"]
+    },
+    {
+        "id" : 15,
+        "titulo" : "Mini Lata Crown Zenith",
+        "descripcion" : "Mini lata con 2 sobres Crown Zenith y arte coleccionable.",
+        "imagen" : "https://m.media-amazon.com/images/I/51j66wQqX5L._UF1000,1000_QL80_.jpg",
+        "precio" : "13.99€",
+        "fecha" : "01/02/2023",
+        "categorias" : ["latas","mini","crown_zenith"]
+    },
+    {
+        "id" : 16,
+        "titulo" : "Premium Zacian & Zamazenta",
+        "descripcion" : "Caja Ultra Premium de Zacian & Zamazenta.",
+        "imagen" : "https://www.bea.swiss/images/product/large/5095.jpg",
+        "precio" : "119.99€",
+        "fecha" : "18/11/2021",
+        "categorias" : ["premium","ultra","coleccionista"]
+    },
+    {
+        "id" : 17,
+        "titulo" : "Poké Ball Tin",
+        "descripcion" : "Lata Poké Ball con 3 sobres y moneda metálica.",
+        "imagen" : "https://m.media-amazon.com/images/I/712lK-hmHfL._UF1000,1000_QL80_.jpg",
+        "precio" : "14.99€",
+        "fecha" : "12/06/2022",
+        "categorias" : ["latas","pokeball","coleccionista"]
+    },
+    {
+        "id" : 18,
+        "titulo" : "Booster Box Crown Zenith",
+        "descripcion" : "Caja con 36 sobres expansión Crown Zenith.",
+        "imagen" : "https://www.cardtrader.com/uploads/blueprints/image/312742/crown-zenith-booster-bundle-crown-zenith.jpg",
+        "precio" : "149.99€",
+        "fecha" : "25/01/2023",
+        "categorias" : ["booster_box","crown_zenith","sellado"]
+    },
+    {
+        "id" : 19,
+        "titulo" : "Deck Inteleon VMAX",
+        "descripcion" : "Mazo temático Inteleon VMAX con cartas listas para jugar.",
+        "imagen" : "https://m.media-amazon.com/images/I/71YcKxCtPYL.jpg",
+        "precio" : "17.99€",
+        "fecha" : "14/10/2021",
+        "categorias" : ["mazos","vmx","juego_rapido"]
+    },
+    {
+        "id" : 20,
+        "titulo" : "Caja Pikachu VMAX",
+        "descripcion" : "Caja con promos Pikachu V y VMAX más sobres.",
+        "imagen" : "https://mundodistorsion.es/wp-content/uploads/2025/04/pikachu-vmax.webp",
+        "precio" : "29.99€",
+        "fecha" : "06/02/2022",
+        "categorias" : ["cajas","promos","coleccionista"]
+    }
+]
