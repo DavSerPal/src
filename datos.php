@@ -1,6 +1,8 @@
 
 <!-- DAVID SERRANO PALAZÓN -->
 
+<?php include_once("utiles.php") ?>
+
 <?php
     $loggedIn = TRUE;
 
@@ -37,7 +39,9 @@
     $array2 = json_decode($json2, true);
 
     // 3. Fusionar en un único array
-    $productos = array_merge($array1, $array2);
+    $prod = array_merge($array1, $array2);
+
+    $productos = cambia_fecha($prod);
 
     //Array que contiene los productos con su información
     // $productos = [

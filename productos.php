@@ -1,6 +1,4 @@
-
 <!-- DAVID SERRANO PALAZÓN -->
-
 
 <?php include_once("templates/header.php") ?>
 <?php include_once("datos.php") ?>
@@ -52,8 +50,13 @@ if ($order == 0) {
     return strcmp($b['titulo'], $a['titulo']);
   }
   usort($productos, 'titulo_asc');
+} elseif ($order == 2) {
+  orden_por_fecha($productos, 2);
+} elseif ($order == 3) {
+  orden_por_fecha($productos, 3);
 }
 ?>
+
 <?php 
     $prod_filtrados = array_values(array_filter($productos, function($producto) use($fltro_categoria,$categorias){
       if ($fltro_categoria=="no-cat"){
@@ -75,8 +78,10 @@ if ($order == 0) {
   ?>
 
 <div class="d-flex mx-auto">
-  <a class="btn btn-primary btn-lg px-5 py-2 mx-2" href="?page=<?php print($page) ?>&categoria=<?php print($fltro_categoria) ?>&order=0&prod_pag=<?php print($prod_por_pag)?>">Descendente (A-Z)</a>
-  <a class="btn btn-primary btn-lg px-5 py-2 mx-2" href="?page=<?php print($page) ?>&categoria=<?php print($fltro_categoria) ?>&order=1&prod_pag=<?php print($prod_por_pag)?>">Ascendente (Z-A)</a>
+  <a class="btn btn-primary btn-lg px-5 py-2 mx-2" href="?page=<?php print($page) ?>&categoria=<?php print($fltro_categoria) ?>&order=0&prod_pag=<?php print($prod_por_pag)?>">Nombre Descendente</a>
+  <a class="btn btn-primary btn-lg px-5 py-2 mx-2" href="?page=<?php print($page) ?>&categoria=<?php print($fltro_categoria) ?>&order=1&prod_pag=<?php print($prod_por_pag)?>">Nombre Ascendente</a>
+  <a class="btn btn-primary btn-lg px-5 py-2 mx-2" href="?page=<?php print($page) ?>&categoria=<?php print($fltro_categoria) ?>&order=2&prod_pag=<?php print($prod_por_pag)?>">Fecha Descendente</a>
+  <a class="btn btn-primary btn-lg px-5 py-2 mx-2" href="?page=<?php print($page) ?>&categoria=<?php print($fltro_categoria) ?>&order=3&prod_pag=<?php print($prod_por_pag)?>">Fecha Ascendente</a>
   <a class="btn btn-primary btn-lg px-5 py-2 mx-2" href="productos.php?page=<?php print($page) ?>&categoria=no-cat&order=<?php print($order)?>&prod_pag=<?php print($prod_por_pag)?>">No filtrar por categoría</a>
 </div>
 
